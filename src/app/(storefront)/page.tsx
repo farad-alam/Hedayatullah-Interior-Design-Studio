@@ -224,24 +224,22 @@ export default async function StorefrontPage() {
               const sTitle = isAr ? (service.titleAr || service.title) : service.title
               const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
               return (
-                <div key={service.id} className="bg-[#FAF8F5] rounded-[1.5rem] p-3 pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="relative w-full pt-6">
-                    {/* Floating Icon Overlapping the Image */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
-                      <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" />
-                    </div>
-                    
-                    {/* Image Container */}
-                    <div className="relative w-full h-48 md:h-52 rounded-2xl overflow-hidden mb-6">
-                      {service.image ? (
-                        <Image src={service.image} alt={sTitle} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                      ) : (
-                        <div className="w-full h-full" style={{ background: 'var(--sf-cream-dark)' }} />
-                      )}
-                    </div>
+                <div key={service.id} className="bg-[#FAF8F5] rounded-[1.5rem] pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300 mt-6">
+                  {/* Floating Icon Overlapping the Image Top Edge */}
+                  <div className="absolute -top-[23px] left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
+                    <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" />
                   </div>
                   
-                  <div className="px-4 flex flex-col flex-1 text-center">
+                  {/* Image Container */}
+                  <div className="relative w-full h-48 md:h-52 rounded-t-[1.5rem] overflow-hidden mb-6">
+                    {service.image ? (
+                      <Image src={service.image} alt={sTitle} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                    ) : (
+                      <div className="w-full h-full" style={{ background: 'var(--sf-cream-dark)' }} />
+                    )}
+                  </div>
+                  
+                  <div className="px-6 flex flex-col flex-1 text-center">
                     <h3 className="font-playfair font-bold text-[1.1rem] mb-2" style={{ color: 'var(--sf-charcoal)' }}>
                       {sTitle}
                     </h3>
