@@ -228,7 +228,7 @@ export default async function StorefrontPage() {
                   <div className="relative w-full pt-6">
                     {/* Floating Icon Overlapping the Image */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
-                      <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" strokeWidth={1.5} />
+                      <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" />
                     </div>
                     
                     {/* Image Container */}
