@@ -98,30 +98,19 @@ export default async function StorefrontPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* ══════════════════════════════════════════
-          1. HERO — FULL BACKGROUND IMAGE (Left Aligned)
-      ══════════════════════════════════════════ */}
+      {/* 1. HERO */}
       <section className="relative min-h-[90vh] lg:min-h-screen w-full flex items-center overflow-hidden">
-        {/* Background Image Slider */}
         <HeroSlider images={heroImages} />
-        
-        {/* Gradient overlay fading from dark (left/right) to transparent */}
         <div 
           className={`absolute inset-0 bg-gradient-to-t md:bg-gradient-to-${isAr ? 'l' : 'r'} from-black/80 via-black/40 to-transparent`} 
         />
-
-        {/* Content Container */}
         <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col justify-center mt-20 md:mt-0 h-full">
-          
           <div className={`max-w-2xl ${isAr ? 'ml-auto text-right' : 'mr-auto text-left'} animate-fade-up`}>
-            {/* Label */}
             <div className={`flex items-center gap-3 mb-8 ${isAr ? 'justify-end' : 'justify-start'}`}>
               <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em]" style={{ color: 'var(--sf-tan)' }}>
                 {isAr ? 'حياة عضوية. معيشة مستوحاة.' : 'ORGANIC SPACES. INSPIRED LIVING.'}
               </span>
             </div>
-
-            {/* Main Headline */}
             <h1
               className="font-playfair font-bold leading-tight mb-6"
               style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', color: '#F7F3EC', lineHeight: 1.1 }}
@@ -129,21 +118,14 @@ export default async function StorefrontPage() {
               {restWords}{' '}
               <em style={{ fontStyle: 'italic', color: 'var(--sf-tan)', fontWeight: 400 }}>{lastWord}</em>
             </h1>
-
-            {/* Subheadline */}
             <p
               className="mb-10 leading-relaxed"
               style={{ fontSize: '1.05rem', color: 'rgba(247,243,236,0.85)', lineHeight: 1.7 }}
             >
               {heroSub || defaultSub}
             </p>
-
-            {/* CTA Buttons */}
             <div className={`flex flex-col sm:flex-row items-center gap-4 ${isAr ? 'sm:flex-row-reverse' : ''}`}>
-              <a
-                href="#gallery"
-                className="sf-btn-primary"
-              >
+              <a href="#gallery" className="sf-btn-primary">
                 {isAr ? 'استكشف أعمالنا' : 'EXPLORE OUR WORK'}
               </a>
             </div>
@@ -151,21 +133,15 @@ export default async function StorefrontPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          2. TRUST FEATURES — Floating card strip
-      ══════════════════════════════════════════ */}
+      {/* 2. TRUST FEATURES */}
       {trustFeatures.length > 0 && (
         <section className="px-6 relative z-20 -mt-16 pb-16" style={{ background: 'transparent' }}>
           <div className="container mx-auto max-w-6xl animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="sf-card p-8 md:p-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
               {trustFeatures.slice(0, 4).map(feature => (
                 <div key={feature.id} className="flex flex-col items-center text-center gap-4">
-                  {/* Icon circle */}
                   <div className="sf-icon-wrap">
-                    <DynamicIcon
-                      name={feature.icon || 'CheckCircle'}
-                      className="h-6 w-6"
-                    />
+                    <DynamicIcon name={feature.icon || 'CheckCircle'} className="h-6 w-6" />
                   </div>
                   <div>
                     <h3
@@ -185,81 +161,17 @@ export default async function StorefrontPage() {
         </section>
       )}
 
-      {/* ══════════════════════════════════════════
-          3. SERVICES
-      ══════════════════════════════════════════ */}
-      <section id="services" className="py-28 px-6 relative" style={{ background: 'var(--sf-cream)' }}>
-        <div className="container mx-auto max-w-7xl">
-          {/* Section header */}
-          <div className="text-center mb-16">
-            <span className="sf-label block mb-4">
-              {isAr ? 'ماذا نقدم' : 'WHAT WE DO'}
-            </span>
-            <h2 className="sf-section-heading max-w-2xl mx-auto">
-              {isAr ? 'تصميم مدروس لطريقة' : 'Thoughtful design for'} <br/>
-              <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--sf-brown)' }}>
-                {isAr ? 'حياتك' : 'how you live.'}
-              </em>
-            </h2>
+      {/* 3. BRANDS MARQUEE */}
+      {brandLogos && brandLogos.length > 0 && (
+        <div className="relative z-10 py-16 bg-white border-y border-[#EDE8DC]">
+          <div className="text-center mb-10">
+             <span className="sf-label">{isAr ? 'موثوقون من قبل العلامات التجارية' : 'TRUSTED BY LEADING BRANDS'}</span>
           </div>
-
-          <div className={`grid md:grid-cols-2 lg:grid-cols-${Math.min(services.length || 3, 4)} gap-6`}>
-            {services.map((service, idx) => {
-              const sTitle = isAr ? (service.titleAr || service.title) : service.title
-              const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
-
-              return (
-                <div
-                  key={service.id}
-                  className="sf-card group flex flex-col overflow-hidden"
-                >
-                  {/* Service image */}
-                  <div className="relative h-64 w-full overflow-hidden p-3 pb-0">
-                    <div className="relative w-full h-full rounded-t-xl overflow-hidden">
-                      {service.image ? (
-                        <Image
-                          src={service.image}
-                          alt={sTitle}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="w-full h-full" style={{ background: 'var(--sf-cream-dark)' }} />
-                      )}
-                      
-                      {/* Floating Icon */}
-                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10 sf-icon-wrap" style={{ width: '3rem', height: '3rem' }}>
-                        <DynamicIcon
-                          name={service.icon || 'Wrench'}
-                          className="h-5 w-5"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-8 pt-10 flex-1 flex flex-col text-center">
-                    <h3 className="font-playfair font-bold text-xl mb-3" style={{ color: 'var(--sf-charcoal)' }}>
-                      {sTitle}
-                    </h3>
-                    <p className="text-[0.85rem] leading-relaxed mb-6 flex-1" style={{ color: 'var(--sf-warm-gray)' }}>
-                      {sDesc}
-                    </p>
-
-                    <Link href={`#contact`} className="sf-learn-more mx-auto mt-auto">
-                      {isAr ? 'اعرف المزيد' : 'LEARN MORE'}
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          <BrandMarquee brands={brandLogos} isAr={isAr} />
         </div>
-      </section>
+      )}
 
-      {/* ══════════════════════════════════════════
-          4. PORTFOLIO GALLERY
-      ══════════════════════════════════════════ */}
+      {/* 4. PORTFOLIO GALLERY */}
       {galleryItems.length > 0 && (
         <section id="gallery" className="py-28 px-6" style={{ background: '#fff' }}>
           <div className="container mx-auto max-w-[90rem]">
@@ -277,20 +189,73 @@ export default async function StorefrontPage() {
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
-            
             <ClientGallery items={galleryItems} isAr={isAr} />
           </div>
         </section>
       )}
 
-      {/* ══════════════════════════════════════════
-          5. ABOUT US SECTION
-      ══════════════════════════════════════════ */}
+      {/* 5. VIDEO REELS */}
+      <VideoReels 
+        videos={videoReels} 
+        isAr={isAr} 
+        title={isAr ? 'أعمالنا في الميدان' : 'Our Work in Action'} 
+      />
+
+      {/* 6. SERVICES */}
+      <section id="services" className="py-28 px-6 relative" style={{ background: 'var(--sf-cream)' }}>
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <span className="sf-label block mb-4">
+              {isAr ? 'ماذا نقدم' : 'WHAT WE DO'}
+            </span>
+            <h2 className="sf-section-heading max-w-2xl mx-auto">
+              {isAr ? 'تصميم مدروس لطريقة' : 'Thoughtful design for'} <br/>
+              <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--sf-brown)' }}>
+                {isAr ? 'حياتك' : 'how you live.'}
+              </em>
+            </h2>
+          </div>
+          <div className={`grid md:grid-cols-2 lg:grid-cols-${Math.min(services.length || 3, 4)} gap-6`}>
+            {services.map((service, idx) => {
+              const sTitle = isAr ? (service.titleAr || service.title) : service.title
+              const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
+              return (
+                <div key={service.id} className="sf-card group flex flex-col overflow-hidden">
+                  <div className="relative h-64 w-full overflow-hidden p-3 pb-0">
+                    <div className="relative w-full h-full rounded-t-xl overflow-hidden">
+                      {service.image ? (
+                        <Image src={service.image} alt={sTitle} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                      ) : (
+                        <div className="w-full h-full" style={{ background: 'var(--sf-cream-dark)' }} />
+                      )}
+                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10 sf-icon-wrap" style={{ width: '3rem', height: '3rem' }}>
+                        <DynamicIcon name={service.icon || 'Wrench'} className="h-5 w-5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-8 pt-10 flex-1 flex flex-col text-center">
+                    <h3 className="font-playfair font-bold text-xl mb-3" style={{ color: 'var(--sf-charcoal)' }}>
+                      {sTitle}
+                    </h3>
+                    <p className="text-[0.85rem] leading-relaxed mb-6 flex-1" style={{ color: 'var(--sf-warm-gray)' }}>
+                      {sDesc}
+                    </p>
+                    <Link href={`#contact`} className="sf-learn-more mx-auto mt-auto">
+                      {isAr ? 'اعرف المزيد' : 'LEARN MORE'}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. ABOUT US SECTION */}
       <AboutSection isAr={isAr} />
 
-      {/* ══════════════════════════════════════════
-          6. STATS STRIP
-      ══════════════════════════════════════════ */}
+      {/* 8. STATS STRIP */}
       {stats.length > 0 && (
         <section className="px-6 relative z-30 -mt-16 mb-28">
           <div className="container mx-auto max-w-5xl">
@@ -322,50 +287,7 @@ export default async function StorefrontPage() {
         </section>
       )}
 
-      {/* ══════════════════════════════════════════
-          7. PROCESS / WORKFLOW (Mocked from reference)
-      ══════════════════════════════════════════ */}
-      <section className="py-24 px-6 relative" style={{ background: '#fff' }}>
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-20">
-            <span className="sf-label block mb-4">
-              {isAr ? 'منهجيتنا' : 'OUR PROCESS'}
-            </span>
-            <h2 className="sf-section-heading max-w-3xl mx-auto">
-              {isAr ? 'عملية مدروسة. تجربة سهلة.' : 'A thoughtful process. Effortless experience.'}
-            </h2>
-          </div>
-
-          <div className={`flex flex-col md:flex-row justify-between items-start gap-8 relative ${isAr ? 'md:flex-row-reverse' : ''}`}>
-            {/* Subtle connecting line */}
-            <div className="hidden md:block absolute top-8 left-12 right-12 h-px border-t-2 border-dashed" style={{ borderColor: 'var(--sf-cream-dark)' }} />
-
-            {[
-              { num: '1', titleEn: 'DISCOVER', titleAr: 'اكتشاف', descEn: 'We get to know you, your vision, and your space.', descAr: 'نتعرف عليك، على رؤيتتك ومساحتك.', icon: 'Search' },
-              { num: '2', titleEn: 'DESIGN', titleAr: 'تصميم', descEn: 'We create a tailored design that reflects your lifestyle.', descAr: 'نبتكر تصميماً مخصصاً يعكس أسلوب حياتك.', icon: 'PenTool' },
-              { num: '3', titleEn: 'PLAN', titleAr: 'تخطيط', descEn: 'We refine every detail and bring the plan to life.', descAr: 'ننقح كل التفاصيل ونحول الخطة إلى واقع.', icon: 'Layout' },
-              { num: '4', titleEn: 'EXECUTE', titleAr: 'تنفيذ', descEn: 'We manage and collaborate with trusted partners.', descAr: 'ندير العمل ونتعاون مع شركاء موثوقين.', icon: 'Hammer' },
-              { num: '5', titleEn: 'ENJOY', titleAr: 'استمتاع', descEn: 'Move in, exhale, and love where you live.', descAr: 'انتقل، تنفس، وأحب المكان الذي تعيش فيه.', icon: 'Heart' },
-            ].map((step, i) => (
-              <div key={i} className="flex flex-col items-center text-center relative z-10 bg-white w-full md:w-1/5">
-                <div className="sf-icon-wrap mb-6" style={{ background: 'var(--sf-green)', color: '#fff', border: 'none' }}>
-                  <DynamicIcon name={step.icon} className="h-5 w-5" />
-                </div>
-                <h4 className="text-[0.7rem] font-bold tracking-[0.15em] uppercase mb-3" style={{ color: 'var(--sf-charcoal)' }}>
-                  {step.num}. {isAr ? step.titleAr : step.titleEn}
-                </h4>
-                <p className="text-[0.8rem] leading-relaxed px-4" style={{ color: 'var(--sf-warm-gray)' }}>
-                  {isAr ? step.descAr : step.descEn}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          8. TESTIMONIALS
-      ══════════════════════════════════════════ */}
+      {/* 9. TESTIMONIALS */}
       {testimonials.length > 0 && (
         <section className="py-32 px-6" style={{ background: 'var(--sf-cream)' }}>
           <div className="container mx-auto max-w-6xl">
@@ -377,7 +299,6 @@ export default async function StorefrontPage() {
                 {isAr ? 'قصص من عملائنا.' : 'Stories from our clients.'}
               </h2>
             </div>
-
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.slice(0, 3).map((t, idx) => (
                 <div
@@ -413,98 +334,19 @@ export default async function StorefrontPage() {
         </section>
       )}
 
-      {/* ══════════════════════════════════════════
-          9. VIDEO REELS
-      ══════════════════════════════════════════ */}
-      <VideoReels 
-        videos={videoReels} 
-        isAr={isAr} 
-        title={isAr ? 'أعمالنا في الميدان' : 'Our Work in Action'} 
-      />
-
-      {/* ══════════════════════════════════════════
-          10. BRANDS MARQUEE
-      ══════════════════════════════════════════ */}
-      {brandLogos && brandLogos.length > 0 && (
-        <div className="relative z-10 py-16 bg-white border-y border-[#EDE8DC]">
-          <div className="text-center mb-10">
-             <span className="sf-label">{isAr ? 'موثوقون من قبل العلامات التجارية' : 'TRUSTED BY LEADING BRANDS'}</span>
-          </div>
-          <BrandMarquee brands={brandLogos} isAr={isAr} />
-        </div>
-      )}
-
-      {/* ══════════════════════════════════════════
-          11. FAQ
-      ══════════════════════════════════════════ */}
-      {faqs.length > 0 && (
-        <section id="faq" className="py-28 px-6" style={{ background: '#fff' }}>
-          <div className="container mx-auto max-w-4xl">
-            <div className={`mb-16 text-center`}>
-              <span className="sf-label block mb-4">
-                {isAr ? 'الأسئلة الشائعة' : 'FAQ'}
-              </span>
-              <h2 className="sf-section-heading">
-                {isAr ? 'أسئلة يطرحها عملاؤنا' : 'Questions We Get Asked'}
-              </h2>
-            </div>
-
-            <div className="space-y-4">
-              {faqs.map((faq) => (
-                <details
-                  key={faq.id}
-                  className="group [&_summary::-webkit-details-marker]:hidden rounded-xl overflow-hidden transition-all"
-                  style={{ background: 'var(--sf-cream)' }}
-                >
-                  <summary
-                    className={`flex items-center justify-between p-6 md:p-8 cursor-pointer font-playfair font-bold text-lg md:text-xl ${isAr ? 'flex-row-reverse text-right' : ''}`}
-                    style={{ color: 'var(--sf-charcoal)' }}
-                  >
-                    <span>{isAr ? (faq.questionAr || faq.question) : faq.question}</span>
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full border border-[var(--sf-brown)] flex items-center justify-center ml-4 relative">
-                      {/* Plus / Minus icon CSS trick */}
-                      <span className="absolute w-3 h-px bg-[var(--sf-brown)]" />
-                      <span className="absolute w-px h-3 bg-[var(--sf-brown)] transition-transform duration-300 group-open:rotate-90 group-open:opacity-0" />
-                    </div>
-                  </summary>
-                  <div
-                    className={`px-6 md:px-8 pb-8 text-[0.95rem] leading-relaxed ${isAr ? 'text-right' : ''}`}
-                    style={{ color: 'var(--sf-warm-gray)' }}
-                  >
-                    {isAr ? (faq.answerAr || faq.answer) : faq.answer}
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ══════════════════════════════════════════
-          12. WHATSAPP FREE QUOTE CTA (Terra Style)
-      ══════════════════════════════════════════ */}
+      {/* 10. WHATSAPP FREE QUOTE CTA */}
       {wpClean && (
         <section className="py-24 px-6 relative" style={{ background: 'var(--sf-cream)' }}>
-          {/* Decorative botanical element overlay (simulated with CSS shapes for now) */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--sf-tan)] opacity-10 rounded-bl-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[var(--sf-green)] opacity-5 rounded-tr-full pointer-events-none" />
-
-          <div
-            className="container mx-auto max-w-6xl rounded-3xl overflow-hidden relative shadow-2xl"
-            style={{ background: 'var(--sf-green-dark)' }}
-          >
-            {/* Subtle gradient texture */}
+          <div className="container mx-auto max-w-6xl rounded-3xl overflow-hidden relative shadow-2xl" style={{ background: 'var(--sf-green-dark)' }}>
             <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent pointer-events-none" />
-            
             <div className={`py-20 px-10 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12 relative z-10 ${isAr ? 'md:flex-row-reverse text-right' : 'text-left'}`}>
               <div className="max-w-xl">
                 <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-4 block" style={{ color: 'var(--sf-tan)' }}>
                   {isAr ? 'جاهز للبدء؟' : 'READY TO BEGIN?'}
                 </span>
-                <h2
-                  className="font-playfair font-bold mb-6"
-                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#F7F3EC', lineHeight: 1.15 }}
-                >
+                <h2 className="font-playfair font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#F7F3EC', lineHeight: 1.15 }}>
                   {isAr ? 'دعنا نبتكر مساحة تشعرك بأنها' : "Let's create a space that feels like"}{' '}
                   <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--sf-tan)' }}>{isAr ? 'لك.' : 'you.'}</em>
                 </h2>
@@ -514,7 +356,6 @@ export default async function StorefrontPage() {
                     : "Send us a photo of your space and we'll provide a consultation and quote."}
                 </p>
               </div>
-              
               <a
                 href={`https://wa.me/${wpClean}?text=${encodeURIComponent(isAr ? 'مرحباً، أريد الاستفسار والحصول على استشارة.' : 'Hello, I would like to book a consultation.')}`}
                 target="_blank"
@@ -528,6 +369,48 @@ export default async function StorefrontPage() {
               >
                 {isAr ? 'احجز استشارتك' : 'BOOK YOUR CONSULTATION'}
               </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 11. FAQ */}
+      {faqs.length > 0 && (
+        <section id="faq" className="py-28 px-6" style={{ background: '#fff' }}>
+          <div className="container mx-auto max-w-4xl">
+            <div className={`mb-16 text-center`}>
+              <span className="sf-label block mb-4">
+                {isAr ? 'الأسئلة الشائعة' : 'FAQ'}
+              </span>
+              <h2 className="sf-section-heading">
+                {isAr ? 'أسئلة يطرحها عملاؤنا' : 'Questions We Get Asked'}
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <details
+                  key={faq.id}
+                  className="group [&_summary::-webkit-details-marker]:hidden rounded-xl overflow-hidden transition-all"
+                  style={{ background: 'var(--sf-cream)' }}
+                >
+                  <summary
+                    className={`flex items-center justify-between p-6 md:p-8 cursor-pointer font-playfair font-bold text-lg md:text-xl ${isAr ? 'flex-row-reverse text-right' : ''}`}
+                    style={{ color: 'var(--sf-charcoal)' }}
+                  >
+                    <span>{isAr ? (faq.questionAr || faq.question) : faq.question}</span>
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full border border-[var(--sf-brown)] flex items-center justify-center ml-4 relative">
+                      <span className="absolute w-3 h-px bg-[var(--sf-brown)]" />
+                      <span className="absolute w-px h-3 bg-[var(--sf-brown)] transition-transform duration-300 group-open:rotate-90 group-open:opacity-0" />
+                    </div>
+                  </summary>
+                  <div
+                    className={`px-6 md:px-8 pb-8 text-[0.95rem] leading-relaxed ${isAr ? 'text-right' : ''}`}
+                    style={{ color: 'var(--sf-warm-gray)' }}
+                  >
+                    {isAr ? (faq.answerAr || faq.answer) : faq.answer}
+                  </div>
+                </details>
+              ))}
             </div>
           </div>
         </section>
