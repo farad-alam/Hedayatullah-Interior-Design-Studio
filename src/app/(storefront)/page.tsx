@@ -197,7 +197,7 @@ export default async function StorefrontPage() {
       />
 
       {/* 6. SERVICES */}
-      <section id="services" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--sf-cream)' }}>
+      <section id="services" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--sf-cream-dark)' }}>
         {/* Subtle decorative botanical SVG top right */}
         <svg width="250" height="350" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 right-0 pointer-events-none opacity-20 translate-x-[30%] -translate-y-[10%]" style={{ color: 'var(--sf-tan)' }}>
           <path d="M200 300C200 300 150 200 100 100C50 0 150 -50 200 0C180 50 200 300 200 300Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -224,9 +224,9 @@ export default async function StorefrontPage() {
               const sTitle = isAr ? (service.titleAr || service.title) : service.title
               const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
               return (
-                <div key={service.id} className="bg-[#EDE8DC] rounded-[1.5rem] pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300 mt-6">
+                <div key={service.id} className="bg-[#FAF8F5] rounded-[1.5rem] pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300 mt-6">
                   {/* Floating Icon Overlapping the Image Top Edge */}
-                  <div className="absolute -top-[23px] left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#EDE8DC]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
+                  <div className="absolute -top-[23px] left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
                     <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" />
                   </div>
                   
