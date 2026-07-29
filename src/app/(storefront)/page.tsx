@@ -197,7 +197,16 @@ export default async function StorefrontPage() {
       />
 
       {/* 6. SERVICES */}
-      <section id="services" className="py-28 px-6 relative" style={{ background: 'var(--sf-cream)' }}>
+      <section id="services" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--sf-cream)' }}>
+        {/* Subtle decorative botanical SVG top right */}
+        <svg width="250" height="350" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 right-0 pointer-events-none opacity-20 translate-x-[30%] -translate-y-[10%]" style={{ color: 'var(--sf-tan)' }}>
+          <path d="M200 300C200 300 150 200 100 100C50 0 150 -50 200 0C180 50 200 300 200 300Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M100 100C100 100 50 80 20 120C-10 160 30 180 50 140C70 100 100 100 100 100Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M125 150C125 150 90 140 70 170C50 200 80 220 100 190C120 160 125 150 125 150Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M150 200C150 200 120 190 100 220C80 250 110 270 130 240C150 210 150 200 150 200Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M75 50C75 50 40 40 20 70C0 100 30 120 50 90C70 60 75 50 75 50Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <span className="sf-label block mb-4">
@@ -215,29 +224,33 @@ export default async function StorefrontPage() {
               const sTitle = isAr ? (service.titleAr || service.title) : service.title
               const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
               return (
-                <div key={service.id} className="sf-card group flex flex-col overflow-hidden">
-                  <div className="relative h-64 w-full overflow-hidden p-3 pb-0">
-                    <div className="relative w-full h-full rounded-t-xl overflow-hidden">
+                <div key={service.id} className="bg-[#FAF8F5] rounded-[1.5rem] p-3 pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="relative w-full pt-6">
+                    {/* Floating Icon Overlapping the Image */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
+                      <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" strokeWidth={1.5} />
+                    </div>
+                    
+                    {/* Image Container */}
+                    <div className="relative w-full h-48 md:h-52 rounded-2xl overflow-hidden mb-6">
                       {service.image ? (
-                        <Image src={service.image} alt={sTitle} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <Image src={service.image} alt={sTitle} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                       ) : (
                         <div className="w-full h-full" style={{ background: 'var(--sf-cream-dark)' }} />
                       )}
-                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 z-10 sf-icon-wrap" style={{ width: '3rem', height: '3rem' }}>
-                        <DynamicIcon name={service.icon || 'Wrench'} className="h-5 w-5" />
-                      </div>
                     </div>
                   </div>
-                  <div className="p-8 pt-10 flex-1 flex flex-col text-center">
-                    <h3 className="font-playfair font-bold text-xl mb-3" style={{ color: 'var(--sf-charcoal)' }}>
+                  
+                  <div className="px-4 flex flex-col flex-1 text-center">
+                    <h3 className="font-playfair font-bold text-[1.1rem] mb-2" style={{ color: 'var(--sf-charcoal)' }}>
                       {sTitle}
                     </h3>
-                    <p className="text-[0.85rem] leading-relaxed mb-6 flex-1 line-clamp-2" style={{ color: 'var(--sf-warm-gray)' }}>
+                    <p className="text-[0.8rem] leading-relaxed mb-6 flex-1 line-clamp-2" style={{ color: 'var(--sf-warm-gray)' }}>
                       {sDesc}
                     </p>
-                    <Link href={`#contact`} className="sf-learn-more mx-auto mt-auto">
+                    <Link href={`#contact`} className="text-[0.65rem] font-bold uppercase tracking-[0.2em] transition-colors mt-auto flex items-center justify-center gap-1 hover:text-[var(--sf-brown)]" style={{ color: 'var(--sf-warm-gray)' }}>
                       {isAr ? 'اعرف المزيد' : 'LEARN MORE'}
-                      <ArrowRight className="h-3.5 w-3.5" />
+                      <ArrowRight className="h-3 w-3" />
                     </Link>
                   </div>
                 </div>
