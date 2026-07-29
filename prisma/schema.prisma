@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model SiteSettings {
+  id                String   @id @default(cuid())
+  brandName         String
+  brandNameAr       String?
+  logoUrl           String?
+  phone             String?
+  whatsapp          String
+  email             String?
+  address           String?
+  addressAr         String?
+  facebook          String?
+  instagram         String?
+  twitter           String?
+  linkedin          String?
+  youtube           String?
+  tiktok            String?
+  snapchat          String?
+  
+  // Hero Section Config
+  heroHeadline      String?
+  heroHeadlineAr    String?
+  heroSubheadline   String?
+  heroSubheadlineAr String?
+  heroImages        String[] // Cloudinary URLs
+  
+  // Contact & Footer Config
+  workingHours      String?
+  workingHoursAr    String?
+  mapEmbedUrl       String?
+  serviceAreas      String?
+  serviceAreasAr    String?
+  footerTagline     String?
+  footerTaglineAr   String?
+  
+  updatedAt         DateTime @updatedAt
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  description String?
+  images      String[]      // Cloudinary URLs
+  categoryId  String?
+  category    Category?     @relation(fields: [categoryId], references: [id])
+  featured    Boolean       @default(false)
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Service {
+  id                String        @id @default(cuid())
+  title             String
+  titleAr           String?
+  slug              String        @unique
+  description       String?
+  descriptionAr     String?
+  icon              String?       // Icon name or Cloudinary URL
+  image             String?       // Cloudinary URL
+  features          String[]      // List of bullet point features
+  featuresAr        String[]      // Arabic bullet points
+  whatsappMessage   String?       // Pre-filled EN message
+  whatsappMessageAr String?       // Pre-filled AR message
+  status            ContentStatus @default(DRAFT)
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+}
+
+model Category {
+  id        String        @id @default(cuid())
+  name      String
+  slug      String        @unique
+  type      String        // 'project' | 'gallery'
+  projects  Project[]
+  gallery   GalleryItem[]
+  createdAt DateTime      @default(now())
+}
+
+model GalleryItem {
+  id          String        @id @default(cuid())
+  imageUrl       String        // Cloudinary URL (After Image)
+  beforeImageUrl String?       // Cloudinary URL (Before Image)
+  title       String?
+  titleAr     String?
+  caption     String?
+  captionAr   String?
+  categoryId  String?
+  category    Category?     @relation(fields: [categoryId], references: [id])
+  serviceType String?       // e.g., 'maintenance', 'installation', 'dismantling'
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+}
+
+model Testimonial {
+  id               String        @id @default(cuid())
+  clientName       String
+  clientNameAr     String?
+  clientLocation   String?
+  clientLocationAr String?
+  clientTitle      String?
+  content          String
+  contentAr        String?
+  avatarUrl        String?       // Cloudinary URL
+  rating           Int?          @default(5)
+  featured         Boolean       @default(false)
+  status           ContentStatus @default(DRAFT)
+  createdAt        DateTime      @default(now())
+}
+
+model FAQ {
+  id         String        @id @default(cuid())
+  question   String
+  questionAr String?
+  answer     String
+  answerAr   String?
+  status     ContentStatus @default(DRAFT)
+  createdAt  DateTime      @default(now())
+}
+
+model SEO {
+  id          String   @id @default(cuid())
+  pageSlug    String   @unique // 'home' | 'projects' | 'services' | etc.
+  title       String?
+  description String?
+  ogImageUrl  String?  // Cloudinary URL
+  keywords    String[]
+  updatedAt   DateTime @updatedAt
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  url       String   // Cloudinary URL
+  publicId  String   // Cloudinary public ID (for deletion)
+  filename  String
+  mimeType  String
+  size      Int      // bytes
+  alt       String?
+  folder    String?
+  createdAt DateTime @default(now())
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model TrustFeature {
+  id            String   @id @default(cuid())
+  title         String
+  titleAr       String?
+  description   String?
+  descriptionAr String?
+  icon          String?
+  order         Int      @default(0)
+}
+
+model StatCounter {
+  id      String  @id @default(cuid())
+  label   String
+  labelAr String?
+  value   String
+  valueAr String?
+  icon    String?
+  order   Int     @default(0)
+}
+
+model BlogPost {
+  id         String        @id @default(cuid())
+  title      String
+  titleAr    String?
+  slug       String        @unique
+  excerpt    String?
+  excerptAr  String?
+  content    String        @db.Text
+  contentAr  String?       @db.Text
+  coverImage String?
+  author     String?
+  status     ContentStatus @default(DRAFT)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+}
+
+model VideoReel {
+  id           String        @id @default(cuid())
+  title        String
+  titleAr      String?
+  caption      String?
+  captionAr    String?
+  youtubeUrl   String
+  videoId      String
+  category     VideoCategory @default(OTHER)
+  order        Int           @default(0)
+  featured     Boolean       @default(false)
+  status       ContentStatus @default(DRAFT)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+enum VideoCategory {
+  WORKING
+  COMPLETED
+  TRANSFORMATION
+  INSTALLATION
+  OTHER
+}
+
+model BrandLogo {
+  id         String        @id @default(cuid())
+  name       String
+  nameAr     String?
+  imageUrl   String
+  url        String?
+  order      Int           @default(0)
+  status     ContentStatus @default(DRAFT)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+}
+
