@@ -62,7 +62,7 @@ export function VideoReels({ videos, isAr, title = 'Our Work in Action' }: Video
           <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-4 block" style={{ color: 'var(--sf-tan)' }}>
             {isAr ? 'أعمالنا في الميدان' : 'OUR WORK IN ACTION'}
           </span>
-          <h2 className="sf-section-heading mb-6 text-white max-w-3xl mx-auto">
+          <h2 className="sf-section-heading mb-6 max-w-3xl mx-auto" style={{ color: '#F7F3EC' }}>
             {title}
           </h2>
         </div>

@@ -73,11 +73,11 @@ export async function Footer() {
             className="w-full h-full object-cover"
           />
           {/* Subtle gradient overlay to blend the map into the footer */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[var(--sf-cream)] to-transparent opacity-50" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[var(--sf-green-dark)] to-transparent opacity-90" />
         </section>
       )}
 
-      <footer style={{ background: 'var(--sf-cream)', color: 'var(--sf-charcoal)' }}>
+      <footer style={{ background: 'var(--sf-green-dark)', color: '#F7F3EC' }}>
         
         {/* ══════════════════════════════════════════
             FOOTER GRID
@@ -90,41 +90,41 @@ export async function Footer() {
             <Link href="/" className="flex flex-col leading-none group mb-8">
               <span
                 className="font-playfair font-bold tracking-wide"
-                style={{ fontSize: '1.75rem', color: 'var(--sf-charcoal)', lineHeight: 1.1 }}
+                style={{ fontSize: '1.75rem', color: '#F7F3EC', lineHeight: 1.1 }}
               >
                 {displayBrand}
               </span>
               <span
                 className="tracking-[0.25em] uppercase font-semibold"
-                style={{ fontSize: '0.65rem', color: 'var(--sf-brown)', lineHeight: 1 }}
+                style={{ fontSize: '0.65rem', color: 'var(--sf-tan)', lineHeight: 1 }}
               >
                 {isAr ? 'للديكور الداخلي' : 'INTERIORS'}
               </span>
             </Link>
 
-            <p className="text-[0.95rem] leading-relaxed mb-8 max-w-sm" style={{ color: 'var(--sf-warm-gray)' }}>
+            <p className="text-[0.95rem] leading-relaxed mb-8 max-w-sm" style={{ color: 'rgba(247,243,236,0.7)' }}>
               {tagline || (isAr ? 'تصاميم داخلية مستوحاة من العافية لتجلب الجمال والتوازن والمعنى لحياتك اليومية.' : 'Wellness-inspired interiors designed to bring beauty, balance, and meaning to your everyday.')}
             </p>
             
             {/* Social Media Links - Outlined circles style */}
             <div className={`flex gap-4 ${isAr ? 'justify-end md:justify-start flex-row-reverse' : ''}`}>
               {settings?.snapchat && (
-                <a href={settings.snapchat} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-white" style={{ border: '1px solid var(--sf-tan)', color: 'var(--sf-brown)' }}>
+                <a href={settings.snapchat} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-[var(--sf-green-dark)]" style={{ border: '1px solid rgba(212,184,150,0.5)', color: 'var(--sf-tan)' }}>
                   <SnapchatIcon className="h-4 w-4" />
                 </a>
               )}
               {settings?.tiktok && (
-                <a href={settings.tiktok} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-white" style={{ border: '1px solid var(--sf-tan)', color: 'var(--sf-brown)' }}>
+                <a href={settings.tiktok} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-[var(--sf-green-dark)]" style={{ border: '1px solid rgba(212,184,150,0.5)', color: 'var(--sf-tan)' }}>
                   <TikTokIcon className="h-4 w-4" />
                 </a>
               )}
               {settings?.instagram && (
-                <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-white" style={{ border: '1px solid var(--sf-tan)', color: 'var(--sf-brown)' }}>
+                <a href={settings.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-[var(--sf-green-dark)]" style={{ border: '1px solid rgba(212,184,150,0.5)', color: 'var(--sf-tan)' }}>
                   <InstagramIcon className="h-4 w-4" />
                 </a>
               )}
               {settings?.twitter && (
-                <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-white" style={{ border: '1px solid var(--sf-tan)', color: 'var(--sf-brown)' }}>
+                <a href={settings.twitter} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-[var(--sf-tan)] hover:text-[var(--sf-green-dark)]" style={{ border: '1px solid rgba(212,184,150,0.5)', color: 'var(--sf-tan)' }}>
                   <XIcon className="h-4 w-4" />
                 </a>
               )}
@@ -133,39 +133,39 @@ export async function Footer() {
 
           {/* Quick Links / Areas (takes up 3 cols) */}
           <div className="md:col-span-3 pt-2">
-            <h3 className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: 'var(--sf-brown)' }}>
+            <h3 className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: 'var(--sf-tan)' }}>
               {isAr ? 'روابط سريعة' : 'QUICK LINKS'}
             </h3>
-            <ul className="space-y-4 text-[0.85rem]" style={{ color: 'var(--sf-charcoal)' }}>
-              <li><Link href="#services" className="hover:text-[var(--sf-brown)] transition-colors">{isAr ? 'الخدمات' : 'Services'}</Link></li>
-              <li><Link href="#gallery" className="hover:text-[var(--sf-brown)] transition-colors">{isAr ? 'المشاريع' : 'Projects'}</Link></li>
-              <li><Link href="#faq" className="hover:text-[var(--sf-brown)] transition-colors">{isAr ? 'الأسئلة الشائعة' : 'FAQ'}</Link></li>
+            <ul className="space-y-4 text-[0.85rem]" style={{ color: 'rgba(247,243,236,0.85)' }}>
+              <li><Link href="#services" className="hover:text-white transition-colors">{isAr ? 'الخدمات' : 'Services'}</Link></li>
+              <li><Link href="#gallery" className="hover:text-white transition-colors">{isAr ? 'المشاريع' : 'Projects'}</Link></li>
+              <li><Link href="#faq" className="hover:text-white transition-colors">{isAr ? 'الأسئلة الشائعة' : 'FAQ'}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info (takes up 4 cols) */}
           <div className="md:col-span-4 pt-2">
-            <h3 className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: 'var(--sf-brown)' }}>
+            <h3 className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-6" style={{ color: 'var(--sf-tan)' }}>
               {isAr ? 'لنتواصل' : "LET'S CONNECT"}
             </h3>
-            <ul className="space-y-4 text-[0.85rem]" style={{ color: 'var(--sf-charcoal)' }}>
+            <ul className="space-y-4 text-[0.85rem]" style={{ color: 'rgba(247,243,236,0.85)' }}>
               {settings?.email && (
                 <li>
-                  <a href={`mailto:${settings.email}`} className="hover:text-[var(--sf-brown)] transition-colors">
+                  <a href={`mailto:${settings.email}`} className="hover:text-white transition-colors">
                     {settings.email}
                   </a>
                 </li>
               )}
               {settings?.phone && (
                 <li>
-                  <a href={`tel:${settings?.phone}`} className="hover:text-[var(--sf-brown)] transition-colors">
+                  <a href={`tel:${settings?.phone}`} className="hover:text-white transition-colors">
                     {settings.phone}
                   </a>
                 </li>
               )}
               {address && (
                 <li>
-                  <span style={{ color: 'var(--sf-warm-gray)' }}>{address}</span>
+                  <span style={{ color: 'rgba(247,243,236,0.7)' }}>{address}</span>
                 </li>
               )}
               {/* Optional botanical icon from reference */}
@@ -183,8 +183,8 @@ export async function Footer() {
         {/* ══════════════════════════════════════════
             BOTTOM BAR
         ══════════════════════════════════════════ */}
-        <div style={{ borderTop: '1px solid rgba(139, 110, 78, 0.15)' }}>
-          <div className={`container mx-auto px-6 py-6 flex flex-col items-center justify-center text-[0.7rem]`} style={{ color: 'var(--sf-warm-gray)' }}>
+        <div style={{ borderTop: '1px solid rgba(247, 243, 236, 0.1)' }}>
+          <div className={`container mx-auto px-6 py-6 flex flex-col items-center justify-center text-[0.7rem]`} style={{ color: 'rgba(247,243,236,0.5)' }}>
             <p>
               &copy; {new Date().getFullYear()} {displayBrand}. {isAr ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
             </p>

@@ -163,12 +163,7 @@ export default async function StorefrontPage() {
 
       {/* 3. BRANDS MARQUEE */}
       {brandLogos && brandLogos.length > 0 && (
-        <div className="relative z-10 py-16 bg-white border-y border-[#EDE8DC]">
-          <div className="text-center mb-10">
-             <span className="sf-label">{isAr ? 'موثوقون من قبل العلامات التجارية' : 'TRUSTED BY LEADING BRANDS'}</span>
-          </div>
-          <BrandMarquee brands={brandLogos} isAr={isAr} />
-        </div>
+        <BrandMarquee brands={brandLogos} isAr={isAr} />
       )}
 
       {/* 4. PORTFOLIO GALLERY */}
@@ -237,7 +232,7 @@ export default async function StorefrontPage() {
                     <h3 className="font-playfair font-bold text-xl mb-3" style={{ color: 'var(--sf-charcoal)' }}>
                       {sTitle}
                     </h3>
-                    <p className="text-[0.85rem] leading-relaxed mb-6 flex-1" style={{ color: 'var(--sf-warm-gray)' }}>
+                    <p className="text-[0.85rem] leading-relaxed mb-6 flex-1 line-clamp-2" style={{ color: 'var(--sf-warm-gray)' }}>
                       {sDesc}
                     </p>
                     <Link href={`#contact`} className="sf-learn-more mx-auto mt-auto">
