@@ -224,9 +224,9 @@ export default async function StorefrontPage() {
               const sTitle = isAr ? (service.titleAr || service.title) : service.title
               const sDesc = isAr ? (service.descriptionAr || service.description) : service.description
               return (
-                <div key={service.id} className="bg-[#FAF8F5] rounded-[1.5rem] pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300 mt-6">
+                <div key={service.id} className="bg-[#EDE8DC] rounded-[1.5rem] pb-8 flex flex-col relative group shadow-sm hover:shadow-md transition-all duration-300 mt-6">
                   {/* Floating Icon Overlapping the Image Top Edge */}
-                  <div className="absolute -top-[23px] left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#FAF8F5]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
+                  <div className="absolute -top-[23px] left-1/2 -translate-x-1/2 z-20 w-[46px] h-[46px] rounded-full flex items-center justify-center shadow-sm border-[4px] border-[#EDE8DC]" style={{ background: 'var(--sf-green)', color: '#F7F3EC' }}>
                     <DynamicIcon name={service.icon || 'Leaf'} className="h-[22px] w-[22px]" />
                   </div>
                   
