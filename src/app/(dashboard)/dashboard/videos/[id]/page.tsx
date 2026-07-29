@@ -2,8 +2,9 @@ import { VideoReelForm } from '@/dashboard/forms/VideoReelForm'
 import { getVideoReelAction } from '@/core/actions/video.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditVideoPage({ params }: { params: { id: string } }) {
-  const data = await getVideoReelAction(params.id)
+export default async function EditVideoPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const data = await getVideoReelAction(id)
 
   if (!data) {
     notFound()

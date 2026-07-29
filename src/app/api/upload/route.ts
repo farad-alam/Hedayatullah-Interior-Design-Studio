@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     // Upload to Cloudinary using a stream
     const uploadResult = await new Promise((resolve, reject) => {
       const uploadStream = cloudinaryConfig.uploader.upload_stream(
-        { folder: 'agency-platform' },
+        { folder: process.env.CLOUDINARY_FOLDER || 'agency-platform' },
         (error, result) => {
           if (error) return reject(error)
           resolve(result)
@@ -35,8 +35,8 @@ export async function POST(request: NextRequest) {
     })
 
     return NextResponse.json({ success: true, media })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Upload error:', error)
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
+    return NextResponse.json({ error: error?.message || 'Upload failed' }, { status: 500 })
   }
 }

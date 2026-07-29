@@ -464,7 +464,7 @@ async function main() {
     {
       name: 'Gyproc (Saint-Gobain)',
       nameAr: 'جيبروك (سانت غوبان)',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Saint-Gobain_logo.svg/320px-Saint-Gobain_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/saint-gobain.com',
       url: 'https://www.gyproc.com',
       order: 1,
       status: 'PUBLISHED',
@@ -472,7 +472,7 @@ async function main() {
     {
       name: 'Armstrong Ceilings',
       nameAr: 'أرمسترونج للأسقف',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Armstrong_World_Industries_logo.svg/320px-Armstrong_World_Industries_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/armstrongceilings.com',
       url: 'https://www.armstrongceilings.com',
       order: 2,
       status: 'PUBLISHED',
@@ -480,7 +480,7 @@ async function main() {
     {
       name: 'USG Corporation',
       nameAr: 'يو إس جي',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/USG_Corporation_logo.svg/320px-USG_Corporation_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/usg.com',
       url: 'https://www.usg.com',
       order: 3,
       status: 'PUBLISHED',
@@ -488,7 +488,7 @@ async function main() {
     {
       name: 'Knauf',
       nameAr: 'كناوف',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Knauf_logo.svg/320px-Knauf_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/knauf.com',
       url: 'https://www.knauf.com',
       order: 4,
       status: 'PUBLISHED',
@@ -496,7 +496,7 @@ async function main() {
     {
       name: 'Hunter Douglas',
       nameAr: 'هنتر دوغلاس',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hunter_Douglas_logo.svg/320px-Hunter_Douglas_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/hunterdouglas.com',
       url: 'https://www.hunterdouglas.com',
       order: 5,
       status: 'PUBLISHED',
@@ -504,7 +504,7 @@ async function main() {
     {
       name: 'Boral',
       nameAr: 'بورال',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Boral_logo.svg/320px-Boral_logo.svg.png',
+      imageUrl: 'https://logo.clearbit.com/boral.com',
       url: 'https://www.boral.com',
       order: 6,
       status: 'PUBLISHED',
