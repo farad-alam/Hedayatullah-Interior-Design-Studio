@@ -2,7 +2,7 @@ import { GalleryItemForm } from '@/dashboard/forms/GalleryItemForm'
 import { getGalleryItemByIdAction } from '@/core/actions/gallery.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditGalleryItemPage({ params }: { params: { id: string } }) {
+export default async function EditGalleryItemPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const item = await getGalleryItemByIdAction(id)
   if (!item) notFound()

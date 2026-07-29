@@ -10,39 +10,69 @@ interface AboutSectionProps {
 
 export function AboutSection({ isAr }: AboutSectionProps) {
   return (
-    <section className="py-32 relative" style={{ background: 'var(--sf-cream)' }}>
-      {/* 
-        We add extra bottom padding (py-32 instead of py-24) to account for the Stats strip 
-        which will overlap the bottom of this section using a negative top margin. 
-      */}
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <section className="py-28 relative overflow-hidden" style={{ background: '#fff' }}>
+      
+      {/* Organic background accent blobs (css only) */}
+      <div 
+        className="absolute top-10 left-[-10%] w-[40%] h-[60%] rounded-full opacity-[0.03] pointer-events-none"
+        style={{ background: 'var(--sf-green)', filter: 'blur(80px)' }}
+      />
+      <div 
+        className="absolute bottom-10 right-[-10%] w-[30%] h-[50%] rounded-full opacity-[0.03] pointer-events-none"
+        style={{ background: 'var(--sf-brown)', filter: 'blur(80px)' }}
+      />
+
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         
-        <div className={cn("flex flex-col lg:flex-row items-stretch", isAr ? "lg:flex-row-reverse" : "")}>
+        <div className={cn("flex flex-col md:flex-row items-center gap-12 lg:gap-20", isAr ? "md:flex-row-reverse" : "")}>
           
-          {/* Solid Color Card - Overlaps the image on Desktop */}
-          <div 
-            className={cn(
-              "w-full lg:w-[45%] p-10 md:p-16 rounded-2xl relative z-20 shadow-2xl flex flex-col justify-center",
-              // We use negative margins to make the card overlap the image
-              isAr ? "lg:-ml-16 lg:mr-0 mt-8 lg:mt-12" : "lg:-mr-16 lg:ml-0 mb-8 lg:mb-12"
-            )}
-            style={{ background: 'var(--sf-brown)', color: '#fff' }}
-          >
-            <span 
-              className="text-xs font-bold tracking-[0.2em] uppercase mb-4 block" 
-              style={{ color: 'rgba(255,255,255,0.7)' }}
+          {/* Main Architectural Image - Left Side */}
+          <div className="w-full md:w-1/2 relative">
+            {/* Decorative leaf/branch SVG accent behind image */}
+            <div className={`absolute -top-12 ${isAr ? '-right-12' : '-left-12'} text-[var(--sf-tan)] opacity-50 z-0`}>
+              <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M60 180C60 180 60 100 10 50C10 50 40 40 60 80C60 80 80 40 110 50C110 50 60 100 60 180Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M60 130C60 130 90 90 100 60C100 60 70 70 60 100" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            
+            <div className="relative aspect-[4/5] w-full rounded-full rounded-tl-none overflow-hidden z-10">
+              <Image
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80"
+                alt="Interior Design"
+                fill
+                className="object-cover"
+              />
+            </div>
+            
+            {/* Small circular badge overlay */}
+            <div 
+              className={`absolute bottom-8 ${isAr ? '-right-6' : '-left-6'} w-24 h-24 rounded-full flex items-center justify-center z-20 shadow-lg`}
+              style={{ background: 'var(--sf-brown)', color: '#F7F3EC' }}
             >
-              {isAr ? 'عن الشركة' : 'MORE ABOUT US'}
+              <div className="text-center">
+                <span className="block font-playfair font-bold text-2xl leading-none">10</span>
+                <span className="block text-[0.55rem] tracking-[0.2em] uppercase mt-1 opacity-90">
+                  {isAr ? 'سنوات' : 'YEARS'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Text Content - Right Side */}
+          <div className={cn("w-full md:w-1/2 flex flex-col justify-center", isAr ? "text-right" : "text-left")}>
+            <span className="sf-label block mb-6">
+              {isAr ? 'تعرف على المؤسس' : 'MEET THE FOUNDER'}
             </span>
             
-            <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-bold mb-8 leading-[1.15]">
-              {isAr 
-                ? '١٠ سنوات من الجودة والمشاريع الناجحة'
-                : '10 years of quality and successful projects'
-              }
+            <h2 className="sf-section-heading mb-8">
+              {isAr ? 'تصميم بنية صادقة.' : 'Designing with intention.'} <br/>
+              <em style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--sf-brown)' }}>
+                {isAr ? 'مستوحى من الطبيعة.' : 'Rooted in nature.'}
+              </em>
             </h2>
             
-            <div className="space-y-6 mb-10 text-sm md:text-base font-light" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.8 }}>
+            <div className="space-y-6 mb-10 text-[0.95rem] font-light" style={{ color: 'var(--sf-charcoal)', lineHeight: 1.8 }}>
                <p>
                 {isAr 
                   ? 'منذ تأسيسنا، التزمنا بإعادة تعريف مفهوم الفخامة العملية. نجمع بين الحرفية الدقيقة والجماليات العصرية لنقدم تصاميم داخلية ومطابخ ألمنيوم ترتقي بأسلوب حياتك.'
@@ -52,7 +82,7 @@ export function AboutSection({ isAr }: AboutSectionProps) {
               <p>
                 {isAr
                   ? 'كل مشروع هو رحلة تعاونية فريدة. يدرس فريقنا أدق التفاصيل لضمان أن كل زاوية تنبض بالحياة، والجودة تتحدث عن نفسها، دون الحاجة إلى تكاليف باهظة أو هدر للوقت.'
-                  : 'Every project is a unique collaborative journey. Our team considers the finest details to ensure every corner breathes life, and quality speaks for itself, without requiring immense cost or time.'
+                  : 'Every project is a unique collaborative journey. I take the time to understand your story, your needs, and your lifestyle to create spaces that are as beautiful as they are meaningful.'
                 }
               </p>
             </div>
@@ -60,29 +90,12 @@ export function AboutSection({ isAr }: AboutSectionProps) {
             <div>
               <a 
                 href="#contact" 
-                className={cn(
-                  "inline-flex items-center gap-2 font-semibold transition-opacity hover:opacity-80",
-                  isAr ? "flex-row-reverse" : ""
-                )} 
-                // We use a bright green for the CTA text to contrast with the brown
-                style={{ color: '#4ade80' }}
+                className={cn("sf-learn-more", isAr ? "flex-row-reverse" : "")} 
               >
-                {isAr ? 'اقرأ المزيد' : 'Read More'}
-                <ArrowRight className={cn("h-5 w-5", isAr ? "rotate-180" : "")} />
+                {isAr ? 'المزيد عنا' : 'MORE ABOUT US'}
+                <ArrowRight className={cn("h-3.5 w-3.5", isAr ? "rotate-180" : "")} />
               </a>
             </div>
-          </div>
-
-          {/* Main Architectural Image */}
-          <div className="w-full lg:w-[65%] h-[400px] lg:h-[700px] relative rounded-2xl overflow-hidden shadow-lg z-10 lg:my-auto">
-            <Image
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80"
-              alt="Interior Design"
-              fill
-              className="object-cover"
-            />
-            {/* Subtle overlay to enhance image depth */}
-            <div className="absolute inset-0 bg-black/10" />
           </div>
 
         </div>

@@ -14,7 +14,6 @@ export function BrandMarquee({ brands, isAr }: BrandMarqueeProps) {
   const baseX = useMotionValue(0)
   
   // Base velocity. Negative means scroll left, positive means scroll right
-  // If Arabic (RTL), we might want to scroll right instead of left for natural feel
   const baseVelocity = isAr ? 1 : -1
 
   useAnimationFrame((t, delta) => {
@@ -25,28 +24,25 @@ export function BrandMarquee({ brands, isAr }: BrandMarqueeProps) {
   if (!brands || brands.length === 0) return null
 
   // Duplicate brands array to create seamless loop
-  // We need enough items to fill the screen twice to prevent popping
   const loopedBrands = [...brands, ...brands, ...brands, ...brands]
 
   // Wrap the X position so it loops seamlessly. 
-  // -50% means it has scrolled exactly half its total duplicated width.
+  // -25% means it has scrolled exactly one quarter (since array is duplicated 4x)
   const x = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`)
 
   return (
-    <section className="py-20 bg-[#F5F0E8] overflow-hidden border-y border-[#2C3B2D]/10">
-      <div className="container mx-auto px-6 mb-10 text-center">
+    <section className="py-20 bg-white overflow-hidden border-y border-[var(--sf-cream-dark)]">
+      <div className="container mx-auto px-6 mb-12 text-center">
+        {/* Simple elegant label */}
         <span className="sf-label block mb-2" style={{ color: 'var(--sf-brown)' }}>
-          {isAr ? 'شركاء النجاح' : 'Trusted Partners'}
+          {isAr ? 'موثوقون من قبل العلامات التجارية' : 'TRUSTED BY LEADING BRANDS'}
         </span>
-        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-sf-charcoal">
-          {isAr ? 'العلامات التجارية التي نعمل معها' : 'Brands We Work With'}
-        </h2>
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto flex overflow-hidden group">
         {/* Left/Right fading gradients for smooth entering/exiting effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F5F0E8] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#F5F0E8] to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
         <motion.div 
           className="flex whitespace-nowrap gap-16 md:gap-24 items-center pl-16 md:pl-24"
@@ -55,7 +51,7 @@ export function BrandMarquee({ brands, isAr }: BrandMarqueeProps) {
           {loopedBrands.map((brand, idx) => (
             <div 
               key={`${brand.id}-${idx}`} 
-              className="relative w-[90px] md:w-[120px] h-[90px] md:h-[120px] shrink-0 hover:scale-105 transition-all duration-500 cursor-pointer rounded-2xl overflow-hidden shadow-sm"
+              className="relative w-[100px] md:w-[140px] h-[70px] md:h-[90px] shrink-0 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {brand.url ? (
                 <a href={brand.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full relative">
@@ -63,7 +59,7 @@ export function BrandMarquee({ brands, isAr }: BrandMarqueeProps) {
                     src={brand.imageUrl}
                     alt={brand.name}
                     fill
-                    className="object-cover"
+                    className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                   />
                 </a>
               ) : (
@@ -71,7 +67,7 @@ export function BrandMarquee({ brands, isAr }: BrandMarqueeProps) {
                   src={brand.imageUrl}
                   alt={brand.name}
                   fill
-                  className="object-cover"
+                  className="object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
                 />
               )}
             </div>

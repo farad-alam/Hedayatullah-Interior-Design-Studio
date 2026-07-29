@@ -2,7 +2,7 @@ import { TestimonialForm } from '@/dashboard/forms/TestimonialForm'
 import { getTestimonialByIdAction } from '@/core/actions/testimonial.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditTestimonialPage({ params }: { params: { id: string } }) {
+export default async function EditTestimonialPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const item = await getTestimonialByIdAction(id)
   if (!item) notFound()

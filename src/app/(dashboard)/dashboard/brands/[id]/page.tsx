@@ -2,8 +2,9 @@ import { BrandLogoForm } from '@/dashboard/forms/BrandLogoForm'
 import { getBrandLogoAction } from '@/core/actions/brand.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditBrandPage({ params }: { params: { id: string } }) {
-  const data = await getBrandLogoAction(params.id)
+export default async function EditBrandPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const data = await getBrandLogoAction(id)
 
   if (!data) {
     notFound()

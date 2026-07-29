@@ -2,7 +2,7 @@ import { TrustFeatureForm } from '@/dashboard/forms/TrustFeatureForm'
 import { getTrustFeatureByIdAction } from '@/core/actions/trust.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditTrustFeaturePage({ params }: { params: { id: string } }) {
+export default async function EditTrustFeaturePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const item = await getTrustFeatureByIdAction(id)
   if (!item) notFound()

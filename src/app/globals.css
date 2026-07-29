@@ -6,17 +6,20 @@
 
 /* ─── STOREFRONT THEME TOKENS ─────────────────────────────── */
 :root {
-  /* Warm cream / organic palette — inspired by reference design */
-  --sf-cream:       #F5F0E8;
-  --sf-cream-dark:  #EDE8DD;
-  --sf-green:       #2C3B2D;
-  --sf-green-mid:   #3E5040;
-  --sf-green-light: #5A7A5C;
-  --sf-brown:       #A07850;
-  --sf-brown-light: #C8A87A;
-  --sf-tan:         #D4B896;
-  --sf-charcoal:    #1E1E1E;
-  --sf-warm-gray:   #8C7B6B;
+  /* Terra Interiors palette — warm, organic, earthy */
+  --sf-cream:         #F7F3EC;   /* warm off-white background */
+  --sf-cream-dark:    #EDE8DC;   /* slightly deeper cream for alternating sections */
+  --sf-white:         #FFFFFF;
+  --sf-green:         #3D5A3E;   /* sage/olive — warmer than before */
+  --sf-green-dark:    #2C3B2D;   /* deep forest for hover/dark CTAs */
+  --sf-green-mid:     #4A6B4B;
+  --sf-green-light:   #6B8F6D;
+  --sf-brown:         #8B6E4E;   /* rich warm brown */
+  --sf-brown-light:   #B89474;
+  --sf-tan:           #D4B896;   /* light warm tan/gold */
+  --sf-charcoal:      #1E1E1E;   /* near-black for text & footer */
+  --sf-warm-gray:     #8C7B6B;   /* body text muted */
+  --sf-text:          #2C2C2C;   /* primary body text */
 }
 
 @theme inline {
@@ -64,45 +67,43 @@
 
 /* ─── STOREFRONT LIGHT THEME (cream/earth) ────────────────── */
 :root {
-  --background:           oklch(0.97 0.012 80);     /* warm cream */
-  --foreground:           oklch(0.18 0.01 80);      /* near-black warm */
-  --card:                 oklch(0.995 0.005 80);    /* off-white */
+  --background:           oklch(0.97 0.012 80);
+  --foreground:           oklch(0.18 0.01 80);
+  --card:                 oklch(0.995 0.005 80);
   --card-foreground:      oklch(0.18 0.01 80);
   --popover:              oklch(0.995 0.005 80);
   --popover-foreground:   oklch(0.18 0.01 80);
-  --primary:              oklch(0.28 0.04 145);     /* deep forest green */
-  --primary-foreground:   oklch(0.97 0.005 80);     /* cream on green */
-  --secondary:            oklch(0.92 0.02 80);      /* light cream */
-  --secondary-foreground: oklch(0.28 0.04 145);
-  --muted:                oklch(0.93 0.015 80);     /* slightly darker cream */
-  --muted-foreground:     oklch(0.52 0.025 80);     /* warm mid-gray */
-  --accent:               oklch(0.72 0.08 65);      /* warm brown accent */
+  --primary:              oklch(0.32 0.06 145);
+  --primary-foreground:   oklch(0.97 0.005 80);
+  --secondary:            oklch(0.92 0.02 80);
+  --secondary-foreground: oklch(0.32 0.06 145);
+  --muted:                oklch(0.93 0.015 80);
+  --muted-foreground:     oklch(0.52 0.025 80);
+  --accent:               oklch(0.65 0.09 60);
   --accent-foreground:    oklch(0.97 0.005 80);
   --destructive:          oklch(0.577 0.245 27.325);
-  --border:               oklch(0.88 0.02 80);      /* warm border */
+  --border:               oklch(0.88 0.02 80);
   --input:                oklch(0.88 0.02 80);
-  --ring:                 oklch(0.28 0.04 145);
+  --ring:                 oklch(0.32 0.06 145);
   --radius:               0.75rem;
 
-  /* Chart */
-  --chart-1: oklch(0.28 0.04 145);
-  --chart-2: oklch(0.72 0.08 65);
+  --chart-1: oklch(0.32 0.06 145);
+  --chart-2: oklch(0.65 0.09 60);
   --chart-3: oklch(0.52 0.025 80);
   --chart-4: oklch(0.88 0.02 80);
   --chart-5: oklch(0.93 0.015 80);
 
-  /* Sidebar — keep dashboard neutral dark */
   --sidebar:                      oklch(0.18 0.01 80);
   --sidebar-foreground:           oklch(0.93 0.015 80);
-  --sidebar-primary:              oklch(0.28 0.04 145);
+  --sidebar-primary:              oklch(0.32 0.06 145);
   --sidebar-primary-foreground:   oklch(0.97 0.005 80);
   --sidebar-accent:               oklch(0.25 0.02 80);
   --sidebar-accent-foreground:    oklch(0.93 0.015 80);
   --sidebar-border:               oklch(0.28 0.015 80);
-  --sidebar-ring:                 oklch(0.28 0.04 145);
+  --sidebar-ring:                 oklch(0.32 0.06 145);
 }
 
-/* ─── DARK (DASHBOARD ONLY – wrap in .dark class) ────────── */
+/* ─── DARK (DASHBOARD ONLY) ───────────────────────────────── */
 .dark {
   --background:           oklch(0.18 0.01 80);
   --foreground:           oklch(0.93 0.015 80);
@@ -116,14 +117,14 @@
   --secondary-foreground: oklch(0.93 0.015 80);
   --muted:                oklch(0.26 0.01 80);
   --muted-foreground:     oklch(0.62 0.02 80);
-  --accent:               oklch(0.72 0.08 65);
+  --accent:               oklch(0.65 0.09 60);
   --accent-foreground:    oklch(0.18 0.01 80);
   --destructive:          oklch(0.704 0.191 22.216);
   --border:               oklch(1 0 0 / 10%);
   --input:                oklch(1 0 0 / 15%);
   --ring:                 oklch(0.55 0.08 145);
   --chart-1: oklch(0.55 0.08 145);
-  --chart-2: oklch(0.72 0.08 65);
+  --chart-2: oklch(0.65 0.09 60);
   --chart-3: oklch(0.62 0.02 80);
   --chart-4: oklch(0.38 0.01 80);
   --chart-5: oklch(0.26 0.01 80);
@@ -150,15 +151,42 @@
   }
 }
 
-/* ─── STOREFRONT-SPECIFIC UTILITIES ─────────────────────── */
+/* ─── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeRtl {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee-rtl {
+  animation: marqueeRtl 30s linear infinite;
+}
+
+/* ─── STOREFRONT UTILITIES ─────────────────────────────────── */
+
+/* Small-caps section label */
 .sf-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--sf-brown);
 }
 
+/* Decorative rule */
 .sf-divider {
   width: 2.5rem;
   height: 2px;
@@ -168,51 +196,50 @@
   margin: 0 0.5rem;
 }
 
-/* Pill button */
+/* Primary pill button */
 .sf-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   background: var(--sf-green);
-  color: #F5F0E8;
-  padding: 0.875rem 2rem;
+  color: #F7F3EC;
+  padding: 0.85rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   transition: all 0.25s ease;
   cursor: pointer;
   border: none;
 }
-
 .sf-btn-primary:hover {
-  background: var(--sf-green-mid);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(44, 59, 45, 0.25);
+  background: var(--sf-green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(44,59,45,0.22);
 }
 
+/* Outline pill button */
 .sf-btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   background: transparent;
   color: var(--sf-green);
-  padding: 0.875rem 2rem;
+  padding: 0.85rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.875rem;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   transition: all 0.25s ease;
   cursor: pointer;
-  border: 2px solid var(--sf-green);
+  border: 1.5px solid var(--sf-green);
 }
-
 .sf-btn-outline:hover {
   background: var(--sf-green);
-  color: #F5F0E8;
+  color: #F7F3EC;
 }
 
-/* Section heading pattern */
+/* Section serif heading */
 .sf-section-heading {
   font-family: var(--font-playfair);
   font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -223,8 +250,8 @@
 
 /* Feature icon circle */
 .sf-icon-wrap {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.25rem;
+  height: 3.25rem;
   border-radius: 9999px;
   background: var(--sf-cream);
   border: 1.5px solid var(--sf-tan);
@@ -232,4 +259,46 @@
   align-items: center;
   justify-content: center;
   color: var(--sf-green);
+  flex-shrink: 0;
+}
+
+/* Card hover lift */
+.sf-card {
+  background: #fff;
+  border: 1px solid rgba(212,184,150,0.3);
+  box-shadow: 0 2px 16px rgba(44,59,45,0.05);
+  border-radius: 1.25rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.sf-card:hover {
+  box-shadow: 0 8px 36px rgba(44,59,45,0.12);
+  transform: translateY(-3px);
+}
+
+/* Learn more arrow link */
+.sf-learn-more {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--sf-brown);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s ease, opacity 0.2s;
+}
+.sf-learn-more:hover {
+  gap: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Decorative quote mark */
+.sf-quote-mark {
+  font-family: var(--font-playfair);
+  font-size: 4rem;
+  line-height: 0.8;
+  font-weight: 700;
+  color: var(--sf-tan);
+  display: block;
+  margin-bottom: 0.5rem;
 }

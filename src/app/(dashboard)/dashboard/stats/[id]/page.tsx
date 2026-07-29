@@ -2,7 +2,7 @@ import { StatForm } from '@/dashboard/forms/StatForm'
 import { getStatByIdAction } from '@/core/actions/stat.actions'
 import { notFound } from 'next/navigation'
 
-export default async function EditStatPage({ params }: { params: { id: string } }) {
+export default async function EditStatPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const item = await getStatByIdAction(id)
   if (!item) notFound()
