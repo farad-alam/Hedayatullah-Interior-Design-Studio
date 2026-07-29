@@ -454,6 +454,230 @@ async function main() {
   }
   console.log(`  ✓ Created ${faqs.length} FAQs`)
 
+  // ─────────────────────────────────────────────
+  // 7. BRAND LOGOS
+  // ─────────────────────────────────────────────
+  console.log('🏷️  Seeding Brand Logos...')
+  await prisma.brandLogo.deleteMany({})
+
+  const brands = [
+    {
+      name: 'Gyproc (Saint-Gobain)',
+      nameAr: 'جيبروك (سانت غوبان)',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Saint-Gobain_logo.svg/320px-Saint-Gobain_logo.svg.png',
+      url: 'https://www.gyproc.com',
+      order: 1,
+      status: 'PUBLISHED',
+    },
+    {
+      name: 'Armstrong Ceilings',
+      nameAr: 'أرمسترونج للأسقف',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Armstrong_World_Industries_logo.svg/320px-Armstrong_World_Industries_logo.svg.png',
+      url: 'https://www.armstrongceilings.com',
+      order: 2,
+      status: 'PUBLISHED',
+    },
+    {
+      name: 'USG Corporation',
+      nameAr: 'يو إس جي',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/USG_Corporation_logo.svg/320px-USG_Corporation_logo.svg.png',
+      url: 'https://www.usg.com',
+      order: 3,
+      status: 'PUBLISHED',
+    },
+    {
+      name: 'Knauf',
+      nameAr: 'كناوف',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Knauf_logo.svg/320px-Knauf_logo.svg.png',
+      url: 'https://www.knauf.com',
+      order: 4,
+      status: 'PUBLISHED',
+    },
+    {
+      name: 'Hunter Douglas',
+      nameAr: 'هنتر دوغلاس',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hunter_Douglas_logo.svg/320px-Hunter_Douglas_logo.svg.png',
+      url: 'https://www.hunterdouglas.com',
+      order: 5,
+      status: 'PUBLISHED',
+    },
+    {
+      name: 'Boral',
+      nameAr: 'بورال',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Boral_logo.svg/320px-Boral_logo.svg.png',
+      url: 'https://www.boral.com',
+      order: 6,
+      status: 'PUBLISHED',
+    },
+  ]
+
+  for (const brand of brands) {
+    await prisma.brandLogo.create({ data: brand })
+  }
+  console.log(`  ✓ Created ${brands.length} Brand Logos`)
+
+  // ─────────────────────────────────────────────
+  // 8. GALLERY ITEMS
+  // ─────────────────────────────────────────────
+  console.log('🖼️  Seeding Gallery Items...')
+  await prisma.galleryItem.deleteMany({})
+
+  const galleryItems = [
+    {
+      title: 'Suspended Gypsum Ceiling – Hospital Corridor',
+      titleAr: 'سقف جبسي معلق – ممر مستشفى',
+      caption: 'Large-scale suspended gypsum ceiling installation across the main hospital corridor. Delivered on schedule with full safety compliance.',
+      captionAr: 'تركيب سقف جبسي معلق واسع النطاق عبر ممر المستشفى الرئيسي. تم التسليم في الموعد المحدد مع الالتزام الكامل بمعايير السلامة.',
+      imageUrl: 'https://images.unsplash.com/photo-1562591894-4e02c5e32ec0?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Drywall Partition System – Commercial Office',
+      titleAr: 'نظام تقسيم الجدران الجافة – مكتب تجاري',
+      caption: 'Full drywall partition system installed for a multi-room open-plan office, including cable management and finishing.',
+      captionAr: 'تم تركيب نظام تقسيم الجدران الجافة الكامل لمكتب متعدد الغرف، بما في ذلك إدارة الكابلات والتشطيب.',
+      imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Decorative Cornice & Recessed Lighting',
+      titleAr: 'قرنيش ديكوري وإضاءة مدمجة',
+      caption: 'Before & after transformation: decorative gypsum cornice and recessed LED lighting design for a luxury villa living room.',
+      captionAr: 'تحول قبل وبعد: قرنيش جبسي ديكوري وتصميم إضاءة LED مدمجة لغرفة معيشة فيلا فاخرة.',
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+      beforeImageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Aluminum Grid Ceiling – Healthcare Facility',
+      titleAr: 'سقف شبكة ألومنيوم – منشأة رعاية صحية',
+      caption: 'Precision aluminum grid ceiling installation for a healthcare facility, designed for easy access to MEP services.',
+      captionAr: 'تركيب سقف شبكة ألومنيوم بدقة عالية لمنشأة رعاية صحية، مصمم لسهولة الوصول إلى خدمات MEP.',
+      imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Gypsum Finishing – Luxury Villa',
+      titleAr: 'تشطيب جبسي – فيلا فاخرة',
+      caption: 'High-end gypsum plastering and finishing work throughout a luxury residential villa in Arar.',
+      captionAr: 'أعمال تلبيس وتشطيب جبسي راقية في جميع أنحاء فيلا سكنية فاخرة في عرعر.',
+      imageUrl: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Acoustic Partition Board – Conference Room',
+      titleAr: 'لوح تقسيم صوتي – قاعة مؤتمرات',
+      caption: 'Acoustic partition boards installed to create a sound-isolated conference room within an open office plan.',
+      captionAr: 'تم تركيب ألواح التقسيم الصوتي لإنشاء قاعة مؤتمرات معزولة صوتياً ضمن مخطط مكتب مفتوح.',
+      imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80',
+      serviceType: 'INSTALLATION',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Ceiling Maintenance – Cracked Panel Repair',
+      titleAr: 'صيانة السقف – إصلاح الألواح المتشققة',
+      caption: 'Before & after ceiling maintenance work: cracked and damaged gypsum panels fully repaired and refinished to like-new condition.',
+      captionAr: 'صيانة السقف قبل وبعد: تم إصلاح الألواح الجبسية المتشققة والتالفة بالكامل وإعادة تشطيبها.',
+      imageUrl: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80',
+      beforeImageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80',
+      serviceType: 'MAINTENANCE',
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Full Ceiling Dismantling – Renovation Project',
+      titleAr: 'فك السقف بالكامل – مشروع تجديد',
+      caption: 'Safe and efficient dismantling of an existing false ceiling system prior to a full renovation, with complete debris removal.',
+      captionAr: 'فك آمن وفعال لنظام السقف الكاذب الحالي قبل التجديد الكامل، مع إزالة كاملة للركام.',
+      imageUrl: 'https://images.unsplash.com/photo-1590725121839-892b458a74fe?w=800&q=80',
+      serviceType: 'DISMANTLING',
+      status: 'PUBLISHED',
+    },
+  ]
+
+  for (const item of galleryItems) {
+    await prisma.galleryItem.create({ data: item })
+  }
+  console.log(`  ✓ Created ${galleryItems.length} Gallery Items`)
+
+  // ─────────────────────────────────────────────
+  // 9. VIDEO REELS
+  // ─────────────────────────────────────────────
+  console.log('🎬 Seeding Video Reels...')
+  await prisma.videoReel.deleteMany({})
+
+  const videos = [
+    {
+      title: 'Suspended Gypsum Ceiling Installation – Step by Step',
+      titleAr: 'تركيب السقف الجبسي المعلق خطوة بخطوة',
+      caption: 'Watch our skilled team execute a full suspended gypsum ceiling system from framework to finishing.',
+      captionAr: 'شاهد فريقنا المهاري ينفذ نظام سقف جبسي معلق كامل من الهيكل إلى التشطيب.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=TfVFkDJJmAc',
+      videoId: 'TfVFkDJJmAc',
+      category: 'INSTALLATION',
+      order: 1,
+      featured: true,
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Drywall Partition System – Commercial Project',
+      titleAr: 'نظام الجدران الجافة – مشروع تجاري',
+      caption: 'Professional drywall partition installation for a large commercial project, showing speed and precision.',
+      captionAr: 'تركيب احترافي لنظام الجدران الجافة في مشروع تجاري كبير يُظهر السرعة والدقة.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=aFcHtFbmHZI',
+      videoId: 'aFcHtFbmHZI',
+      category: 'INSTALLATION',
+      order: 2,
+      featured: false,
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Before & After – Ceiling Transformation',
+      titleAr: 'قبل وبعد – تحول السقف',
+      caption: 'An impressive transformation: from a bare concrete ceiling to a fully finished decorative gypsum masterpiece.',
+      captionAr: 'تحول مذهل: من سقف خرساني عارٍ إلى تحفة جبسية ديكورية مكتملة التشطيب.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=RNKF_2bDkrg',
+      videoId: 'RNKF_2bDkrg',
+      category: 'TRANSFORMATION',
+      order: 3,
+      featured: true,
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Aluminum Ceiling Grid – Hospital Project in Progress',
+      titleAr: 'شبكة سقف ألومنيوم – مشروع مستشفى قيد التنفيذ',
+      caption: 'Live footage of our team installing an aluminum ceiling grid system across a major healthcare facility.',
+      captionAr: 'لقطات مباشرة لفريقنا يقوم بتركيب نظام شبكة سقف ألومنيوم عبر منشأة رعاية صحية كبرى.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=MIxbMHBk6lo',
+      videoId: 'MIxbMHBk6lo',
+      category: 'WORKING',
+      order: 4,
+      featured: false,
+      status: 'PUBLISHED',
+    },
+    {
+      title: 'Completed Project – Premium Villa Interior Finishing',
+      titleAr: 'مشروع مكتمل – تشطيبات داخلية فاخرة لفيلا',
+      caption: 'Final walkthrough of a completed luxury villa project featuring decorative ceilings, cornices, and full gypsum finishing.',
+      captionAr: 'جولة نهائية لمشروع فيلا فاخرة مكتمل يتضمن أسقفاً ديكورية وقرنيشات وتشطيبات جبسية كاملة.',
+      youtubeUrl: 'https://www.youtube.com/watch?v=UIOHPEq65DM',
+      videoId: 'UIOHPEq65DM',
+      category: 'COMPLETED',
+      order: 5,
+      featured: false,
+      status: 'PUBLISHED',
+    },
+  ]
+
+  for (const video of videos) {
+    await prisma.videoReel.create({ data: video })
+  }
+  console.log(`  ✓ Created ${videos.length} Video Reels`)
+
   console.log('\n✅ All content seeded successfully!')
   console.log('\nSummary:')
   console.log('  - Site Settings: Updated')
@@ -462,6 +686,9 @@ async function main() {
   console.log(`  - Stat Counters: ${stats.length}`)
   console.log(`  - Testimonials: ${testimonials.length}`)
   console.log(`  - FAQs: ${faqs.length}`)
+  console.log(`  - Brand Logos: ${brands.length}`)
+  console.log(`  - Gallery Items: ${galleryItems.length}`)
+  console.log(`  - Video Reels: ${videos.length}`)
 }
 
 main()
